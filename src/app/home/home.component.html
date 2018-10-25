@@ -1,0 +1,32 @@
+<div class="container">
+  <form>
+   <div class="row">
+   <div class="col-lg-12">
+    <div class="form-group">
+      <input type="text" class="form-control" placeholder="Hi buddy ! what movie would you like me to search for you today ?" #moviename (keyup)=search(moviename.value) autofocus>
+    </div>
+  </div>
+  </div>
+   </form> 
+   <div *ngIf="!movies">
+    <h3>Search appropriate Movies</h3>
+   </div>
+  </div>
+  <br>
+  <div class="container left">
+   <div class="row">
+   <div *ngIf="movies">
+     <div *ngFor="let movie of movies"> 
+       <div class="col-md-12 list"  (click)="ChangeId(movie.imdbID)">         
+          <img src="{{movie.Poster}}" alt="my picture" height=50 width=100 style="float: left;">
+          <p>{{movie.Title}}</p><p> ({{movie.Year}})</p>
+          
+       </div>
+     </div>
+   </div>
+   </div>
+  </div>
+  
+  <div class="right">
+  <app-movie [id]="id"></app-movie>
+ </div>
